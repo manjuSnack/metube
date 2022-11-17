@@ -1,0 +1,24 @@
+extends ../base 
+
+block content 
+    div.upload__container
+        div.upload__video
+            video#preview
+            button#actionBtn.social__btn Start Recording
+        if errorMessage 
+            span=errorMessage 
+        form(method="POST", enctype="multipart/form-data")
+            //- a name object of videoUpload.field in the videoRouter.js
+            label(for="video") Video File 
+            input(name="video", id="video", accept="video/*", type="file", required)
+            
+            //- a thumb object of videoUpload.field in the videoRouter.js
+            label(for="thumb") Thumbnail File
+            input(name="thumb", id="thumb", accept="image/*", type="file", required) 
+            input(name="title", placeholder="Title", type="text", required, maxlength=80)
+            input(name="description", placeholder="Description", type="text", required, minlength=2)
+            input(name="hashtags", placeholder="Hashtags, separated by comma.", type="text", required)
+            input(value="Upload", type="submit")
+        
+block scripts 
+    script(src="/assets/js/recorder.js")

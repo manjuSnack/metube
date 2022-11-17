@@ -1,0 +1,22 @@
+include mixins/message.pug
+
+doctype html 
+html(lang="ko")
+    head 
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css")
+        link(rel="stylesheet" href="/assets/css/style.css")
+        //- link(rel="stylesheet" href="https://unpkg.com/mvp.css)
+        title #{pageTitle} | #{siteName}
+    body
+        if messages.error 
+            +message("error", messages.error)
+        if messages.info 
+            +message("info", messages.info)
+        if messages.success 
+            +message("sucess", messages.success)
+        include partials/header
+        main 
+            block content 
+        include partials/footer.pug   
+    script(src="/assets/js/main.js")   
+    block scripts
