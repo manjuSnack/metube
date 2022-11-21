@@ -6,7 +6,7 @@ import "./models/video";
 import "./models/Comment";
 import app from "./server";
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server Listening on http://localhost:${PORT} 🍪`);
