@@ -176,10 +176,11 @@ export const postEdit = async (req, res) => {
     });
   }
   //try {
+  console.log(file);
   const updateUser = await User.findByIdAndUpdate(
     _id,
     {
-      avatarUrl: file ? file.path : avatarUrl,
+      avatarUrl: file ? file.location : avatarUrl, //- from : avatarUrl : file ? file.path : avatartUrl,
       name, //name: name,
       email,
       username,
