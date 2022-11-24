@@ -17,8 +17,7 @@ const s3ImageUploader = multerS3({
   bucket: "metube-exercise",
   acl: "public-read",
   key: function (req, file, cb) {
-    console.log(file);
-    const fileName = Date.now().toString() + "-" + file.filename;
+    const fileName = Date.now().toString() + "-" + file.originalname;
     const path = "images/" + fileName;
     cb(null, path);
   },
@@ -29,7 +28,7 @@ const s3VideoUploader = multerS3({
   bucket: "metube-exercise",
   acl: "public-read",
   key: function (req, file, cb) {
-    const fileName = Date.now().toString() + "-" + file.filename;
+    const fileName = Date.now().toString() + "-" + file.originalname;
     const path = "videos/" + fileName;
     cb(null, path);
   },
