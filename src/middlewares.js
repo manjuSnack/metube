@@ -14,14 +14,24 @@ const isHeroku = process.env.NODE_ENV === "production";
 
 const s3ImageUploader = multerS3({
   s3: s3,
-  bucket: "metube-exercise/images",
+  bucket: "metube-exercise",
   acl: "public-read",
+  key: function (req, file, cb) {
+    const fileName = Date.now().toString() + "-" + file.filename;
+    const path = "images/" + fileName;
+    cb(null, path);
+  },
 });
 
 const s3VideoUploader = multerS3({
   s3: s3,
-  bucket: "metube-exercise/videos",
+  bucket: "metube-exercise",
   acl: "public-read",
+  key: function (req, file, cb) {
+    const fileName = Date.now().toString() + "-" + file.filename;
+    const path = "videos/" + fileName;
+    cb(null, path);
+  },
 });
 
 // Session information
