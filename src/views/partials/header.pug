@@ -18,10 +18,10 @@ header
                         if loggedInUser.avatarUrl === undefind
                             span 😀
                         else 
-                            if loggedInUser.avatarUrl.includes("github")
+                            if loggedInUser.avatarUrl.includes("github") || isHeroku
                                 img.header__avatar(src=loggedInUser.avatarUrl, crossorigin)
-                            else
-                                img.header__avatar(src=loggedInUser.avatarUrl, crossorigin)
+                            else 
+                                img.header__avatar(src="/" + loggedInUser.avatarUrl, crossorgin)
             else 
                 li 
                     a(href="/login") Login 
